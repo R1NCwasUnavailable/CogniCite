@@ -95,6 +95,15 @@ def get_all_papers_from_db():
     conn.close()
     return [dict(r) for r in rows]
 
+def paper_title_exists(title: str) -> bool:
+    """Check if a paper with the given title already exists in the database."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) as cnt FROM papers WHERE title = ?", (title,))
+    count = cursor.fetchone()["cnt"]
+    conn.close()
+    return count > 0
+
 def get_contradictions_from_db():
     conn = get_db_connection()
     cursor = conn.cursor()

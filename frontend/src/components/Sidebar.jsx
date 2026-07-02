@@ -6,6 +6,7 @@ export default function Sidebar({ papers, activePaperId, setActivePaperId, onUpl
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       onUpload(e.target.files[0]);
+      e.target.value = "";  // Reset so the same file can be re-uploaded
     }
   };
 

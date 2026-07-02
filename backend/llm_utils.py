@@ -12,8 +12,8 @@ raw_model = os.getenv("LLM_MODEL", "groq/llama-3.3-70b-versatile")
 # Clean the model name for the official Groq client (e.g., removing 'groq/' prefix)
 model_name = raw_model.replace("groq/", "") if raw_model else "llama-3.3-70b-versatile"
 
-# Initialize Groq client
-client = Groq(api_key=api_key) if api_key else None
+# Initialize Groq client with explicit timeout
+client = Groq(api_key=api_key, timeout=30.0) if api_key else None
 
 def get_client() -> Groq:
     global client
@@ -21,7 +21,7 @@ def get_client() -> Groq:
         # Fallback reload check if api_key wasn't loaded initially
         key = os.getenv("LLM_API_KEY")
         if key:
-            client = Groq(api_key=key)
+            client = Groq(api_key=key, timeout=30.0)
         else:
             raise ValueError("Groq LLM_API_KEY is not set in environment or .env file.")
     return client
