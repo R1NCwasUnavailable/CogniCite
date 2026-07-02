@@ -1,0 +1,20 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Local SQLite databases
+backend/papers.db
+*.db
+
+# Local environment keys (Groq API keys, etc.)
+.env
+
+# Downloaded test papers (large PDFs)
+test_papers/
+
+# Frontend builds and dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+*.log
