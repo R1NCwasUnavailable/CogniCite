@@ -9,6 +9,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+    allowedHosts: 'all',
     proxy: {
       '/papers': 'http://127.0.0.1:8000',
       '/upload': 'http://127.0.0.1:8000',
