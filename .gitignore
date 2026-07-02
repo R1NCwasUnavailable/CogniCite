@@ -13,8 +13,14 @@ backend/papers.db
 # Downloaded test papers (large PDFs)
 test_papers/
 
-# Frontend builds and dependencies
-frontend/node_modules/
+# Node dependencies (recursive)
+node_modules/
+
+# Frontend builds and config
 frontend/dist/
 frontend/.env
 *.log
+
+# Root E2E npm files
+package.json
+package-lock.json
