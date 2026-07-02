@@ -29,9 +29,9 @@ export default function Sidebar({ papers, activePaperId, setActivePaperId, onUpl
   };
 
   return (
-    <aside className="w-[260px] h-full flex flex-col bg-zinc-900 border-r border-zinc-800/80 select-none">
+    <aside className="w-[260px] h-full flex flex-col bg-[#0b0a12] border-r border-[#1e1c31] select-none">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-zinc-800/80">
+      <div className="flex items-center justify-between p-4 border-b border-[#1e1c31]">
         <h2 className="font-semibold text-[13px] text-zinc-300">
           Papers ({papers.length})
         </h2>
@@ -39,7 +39,7 @@ export default function Sidebar({ papers, activePaperId, setActivePaperId, onUpl
         <button
           onClick={triggerFileInput}
           disabled={isUploading}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-medium rounded transition-all-custom cursor-pointer text-[11.5px] border border-blue-500/10 active:scale-95"
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#12111f] hover:bg-[#1a192e] border border-[#1e1c31] hover:border-[#2e2a4a] text-zinc-300 hover:text-white font-medium rounded transition-all-custom cursor-pointer text-[11px] active:scale-95 shadow-sm"
         >
           {isUploading ? (
             <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
@@ -76,15 +76,15 @@ export default function Sidebar({ papers, activePaperId, setActivePaperId, onUpl
               <div
                 key={paper.id}
                 onClick={() => setActivePaperId(isActive ? null : paper.id)}
-                className={`p-3 rounded border transition-all-custom cursor-pointer animate-slide-left ${
+                className={`p-3.5 rounded border transition-all-custom cursor-pointer animate-slide-left obsidian-card ${
                   isActive
-                    ? "bg-zinc-800/80 border-blue-500/60 shadow shadow-blue-500/5 relative after:content-[''] after:absolute after:left-0 after:top-2 after:bottom-2 after:w-[3px] after:bg-blue-500 after:rounded-r"
-                    : "bg-zinc-900 border-zinc-850 hover:bg-zinc-800/50 hover:border-zinc-800"
+                    ? "border-indigo-500/60 bg-[#17152b] relative after:content-[''] after:absolute after:left-0 after:top-2.5 after:bottom-2.5 after:w-[3px] after:bg-indigo-500 after:rounded-r"
+                    : "border-[#1e1c31] hover:bg-[#18172c]/40 hover:border-[#2e2a4a]/80"
                 }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 {/* Title */}
-                <h4 className="font-medium text-zinc-200 line-clamp-2 leading-snug mb-1 text-[12.5px]" title={paper.title}>
+                <h4 className="font-semibold text-zinc-200 line-clamp-2 leading-snug mb-1 text-[12.5px]" title={paper.title}>
                   {paper.title}
                 </h4>
 
@@ -95,7 +95,7 @@ export default function Sidebar({ papers, activePaperId, setActivePaperId, onUpl
 
                 {/* Badge */}
                 <div className="flex">
-                  <span className={`px-2 py-0.5 text-[9px] font-medium rounded border ${getBadgeStyle(paper.status)}`}>
+                  <span className={`px-2.5 py-0.5 text-[9.5px] font-semibold rounded border ${getBadgeStyle(paper.status)}`}>
                     {paper.status}
                   </span>
                 </div>

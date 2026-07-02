@@ -193,37 +193,40 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-zinc-950 text-zinc-100 font-sans text-[13px] antialiased">
-      {/* ─── Solid Header Bar ────────────────────────────────────────── */}
-      <header className="flex items-center justify-between px-5 py-3 bg-zinc-950 border-b border-zinc-800/80 flex-shrink-0 z-10 select-none">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#05050a] text-zinc-200 font-sans text-[13px] antialiased select-none">
+      {/* ─── Gradient Accent Top Line ───────────────────────────────── */}
+      <div className="gradient-accent h-[1px] w-full flex-shrink-0" />
+
+      {/* ─── Solid obsidian header ──────────────────────────────────── */}
+      <header className="flex items-center justify-between px-6 py-3.5 bg-[#07070d] border-b border-[#1e1c31] flex-shrink-0 z-10">
         <div className="flex items-center gap-3">
-          {/* Flat logo with subtle blue hover styling */}
-          <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-blue-500 shadow-inner">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          {/* Futuristic icon logo */}
+          <div className="w-8 h-8 rounded bg-[#12111f] border border-[#1e1c31] flex items-center justify-center text-indigo-400 glow-indigo">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
           </div>
           <div>
-            <h1 className="text-[13.5px] font-semibold tracking-tight text-zinc-200 flex items-center gap-1.5">
+            <h1 className="text-[14px] font-bold tracking-tight text-zinc-100 flex items-center gap-2">
               CogniCite
-              <span className="text-[9px] font-medium px-1.5 py-0.5 rounded bg-blue-950/40 text-blue-400 border border-blue-900/30">Beta</span>
+              <span className="text-[9px] font-semibold px-2 py-0.5 rounded bg-indigo-950/40 text-indigo-300 border border-indigo-900/35">LABS</span>
             </h1>
-            <p className="text-[10px] text-zinc-500 tracking-wide font-medium">Research Consensus & Claim Verification</p>
+            <p className="text-[10px] text-zinc-500 tracking-wide font-medium">Semantic Mapping & Verification</p>
           </div>
         </div>
 
-        {/* Flat Stats Badges */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-medium text-zinc-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+        {/* Dynamic Micro stats widgets */}
+        <div className="flex items-center gap-2 font-medium">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#0b0a12] border border-[#1e1c31] text-[10px] text-zinc-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
             {papers.length} paper{papers.length !== 1 ? "s" : ""}
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-medium text-zinc-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#0b0a12] border border-[#1e1c31] text-[10px] text-zinc-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
             {claims.length} claim{claims.length !== 1 ? "s" : ""}
           </div>
           {contradictions.length > 0 && (
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-red-950/20 border border-red-900/30 text-[10px] font-medium text-red-400">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-red-950/20 border border-red-900/30 text-[10px] text-red-400 animate-fade-in">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               {contradictions.length} conflict{contradictions.length !== 1 ? "s" : ""}
             </div>
@@ -231,7 +234,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* ─── Main Panels Layout ──────────────────────────────────────── */}
+      {/* ─── Main View Panels ───────────────────────────────────────── */}
       <div className="flex flex-1 overflow-hidden relative">
         {/* 1. Left Sidebar */}
         <Sidebar

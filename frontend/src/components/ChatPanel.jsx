@@ -94,17 +94,17 @@ export default function ChatPanel({
   };
 
   return (
-    <main className="flex-1 h-full flex flex-col bg-zinc-950">
-      {/* Top Header Tabs - Solid tech layout */}
-      <div className="flex items-center justify-between border-b border-zinc-800/80 bg-zinc-950 px-6 py-2">
+    <main className="flex-1 h-full flex flex-col bg-[#05050a]">
+      {/* Top Header Tabs - Solid Obsidian tech layout */}
+      <div className="flex items-center justify-between border-b border-[#1e1c31] bg-[#07070d] px-6 py-2.5">
         <div className="flex space-x-1">
           {["chat", "timeline", "graph"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-1.5 px-3.5 text-[12.5px] font-medium rounded transition-all-custom capitalize cursor-pointer border ${
+              className={`py-1.5 px-3.5 text-[11.5px] font-semibold rounded transition-all-custom capitalize cursor-pointer border ${
                 activeTab === tab
-                  ? "bg-zinc-900 border-zinc-800 text-blue-400 font-semibold"
+                  ? "bg-[#12111f] border-[#1e1c31] text-indigo-400 font-bold glow-indigo"
                   : "bg-transparent border-transparent text-zinc-500 hover:text-zinc-300"
               }`}
             >
@@ -114,8 +114,8 @@ export default function ChatPanel({
         </div>
 
         {activePaper && (
-          <div className="text-[11px] text-zinc-400 bg-zinc-900 px-3 py-1 rounded border border-zinc-800/80 flex items-center gap-1.5 max-w-[280px] animate-fade-in font-medium">
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+          <div className="text-[10px] text-zinc-400 bg-[#0b0a12] px-3 py-1 rounded border border-[#1e1c31] flex items-center gap-1.5 max-w-[280px] animate-fade-in font-semibold">
+            <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></span>
             <span className="truncate" title={activePaper.title}>
               Active: {activePaper.title}
             </span>
@@ -128,7 +128,7 @@ export default function ChatPanel({
         {activeTab === "chat" && (
           <>
             {/* Query Mode Chips Bar */}
-            <div className="flex items-center gap-2 px-6 py-3 border-b border-zinc-800/40 bg-zinc-950 overflow-x-auto select-none">
+            <div className="flex items-center gap-2 px-6 py-3 border-b border-[#1e1c31]/30 bg-[#05050a] overflow-x-auto select-none">
               {[
                 { id: "cross-paper", label: "Cross-paper" },
                 { id: "single-paper", label: "Single paper" },
@@ -143,12 +143,12 @@ export default function ChatPanel({
                     key={chip.id}
                     disabled={isSingleDisabled}
                     onClick={() => setQueryMode(chip.id)}
-                    className={`px-3 py-1 rounded text-[11px] font-medium transition-all-custom select-none cursor-pointer border whitespace-nowrap ${
+                    className={`px-3 py-1 rounded text-[10.5px] font-semibold transition-all-custom select-none cursor-pointer border whitespace-nowrap ${
                       isActive
-                        ? "bg-blue-950/40 border-blue-900/60 text-blue-400"
+                        ? "bg-indigo-950/40 border-indigo-900/60 text-indigo-400"
                         : isSingleDisabled
-                        ? "opacity-30 border-zinc-900 text-zinc-600 cursor-not-allowed"
-                        : "bg-zinc-900 border-zinc-850 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-850"
+                        ? "opacity-30 border-[#1e1c31] text-zinc-700 cursor-not-allowed"
+                        : "bg-[#0b0a12] border-[#1e1c31] text-zinc-500 hover:text-zinc-300 hover:bg-[#12111f]"
                     }`}
                     title={isSingleDisabled ? "Select a paper in the sidebar to enable Single paper mode" : ""}
                   >
@@ -159,34 +159,35 @@ export default function ChatPanel({
             </div>
 
             {/* Chat History */}
-            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-5 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6 custom-scrollbar bg-[#05050a]">
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
                 return (
-                  <div key={index} className="flex gap-3 animate-fade-in-up items-start">
+                  <div key={index} className="flex gap-4.5 animate-fade-in-up items-start max-w-4xl mx-auto w-full">
                     {/* Avatars */}
-                    <div className={`w-7 h-7 rounded flex items-center justify-center flex-shrink-0 text-[11px] font-bold ${
+                    <div className={`w-8.5 h-8.5 rounded flex items-center justify-center flex-shrink-0 text-[11px] font-bold border ${
                       isUser 
-                        ? "bg-blue-600/10 text-blue-400 border border-blue-900/30" 
-                        : "bg-zinc-900 text-zinc-400 border border-zinc-800"
+                        ? "bg-indigo-950/40 text-indigo-400 border-indigo-900/35 glow-indigo" 
+                        : "bg-[#0b0a12] text-zinc-400 border-[#1e1c31]"
                     }`}>
                       {isUser ? "U" : "AI"}
                     </div>
 
-                    <div className="flex-1 space-y-1.5">
-                      <div className="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase select-none">
+                    <div className="flex-1 space-y-2">
+                      <div className="text-[10px] text-zinc-500 font-bold tracking-wider uppercase select-none flex items-center gap-1.5">
                         {isUser ? "You" : "Antigravity Assistant"}
+                        {!isUser && <span className="w-1 h-1 rounded-full bg-indigo-500"></span>}
                       </div>
                       
                       <div
-                        className={`max-w-[85%] p-3.5 rounded text-[12.5px] border ${
+                        className={`p-4 rounded border text-[12.5px] leading-relaxed shadow-sm ${
                           isUser
-                            ? "bg-blue-950/20 text-zinc-150 border-blue-900/40"
-                            : "bg-zinc-900 text-zinc-300 border-zinc-850"
+                            ? "bg-[#16142c] text-zinc-200 border-[#29264c]"
+                            : "bg-[#0e0d1a] text-zinc-350 border-[#1d1b33]"
                         }`}
                       >
                         {isUser ? (
-                          <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                          <p className="whitespace-pre-wrap">{msg.content}</p>
                         ) : (
                           formatMessageContent(msg.content)
                         )}
@@ -197,7 +198,7 @@ export default function ChatPanel({
                         <div className="flex flex-col gap-1.5 mt-2">
                           {/* Contradiction Tag */}
                           {msg.contradiction_detected && (
-                            <div className="flex items-start gap-1.5 max-w-[85%] text-[10.5px] font-medium text-red-400 bg-red-950/20 border border-red-900/50 rounded px-2.5 py-1 animate-fade-in">
+                            <div className="flex items-start gap-1.5 max-w-2xl text-[10.5px] font-semibold text-red-400 bg-red-950/15 border border-red-900/40 rounded px-3 py-1.5 animate-fade-in">
                               <span className="mt-0.5">⚠️</span>
                               <span>{msg.contradiction_detail || "Contradiction flagged in recalled sources"}</span>
                             </div>
@@ -205,15 +206,15 @@ export default function ChatPanel({
 
                           {/* Claim Count Tag */}
                           {msg.claim_count > 0 && (
-                            <div className="flex items-center gap-1.5 text-[10.5px] font-medium text-emerald-400 bg-emerald-950/20 border border-emerald-900/40 rounded px-2.5 py-1 w-max group relative select-none animate-fade-in">
+                            <div className="flex items-center gap-1.5 text-[10.5px] font-semibold text-emerald-400 bg-emerald-950/15 border border-emerald-900/40 rounded px-3 py-1.5 w-max group relative select-none animate-fade-in">
                               <span>✓</span>
                               <span>{msg.claim_count} papers support this claim</span>
                               
                               {/* Simple tooltip details */}
                               {msg.supporting_papers && msg.supporting_papers.length > 0 && (
-                                <div className="absolute left-0 bottom-full mb-1.5 hidden group-hover:block bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] p-2 rounded w-[240px] pointer-events-none shadow-xl">
-                                  <p className="font-semibold text-zinc-200 mb-1 border-b border-zinc-850 pb-0.5">Supporting papers:</p>
-                                  <ul className="list-disc pl-3.5 space-y-0.5 font-medium">
+                                <div className="absolute left-0 bottom-full mb-1.5 hidden group-hover:block bg-[#0b0a12] border border-[#1e1c31] text-zinc-400 text-[10px] p-2.5 rounded w-[250px] pointer-events-none shadow-xl">
+                                  <p className="font-bold text-zinc-300 mb-1 border-b border-[#1e1c31] pb-1">Supporting papers:</p>
+                                  <ul className="list-disc pl-3.5 space-y-1 font-semibold">
                                     {msg.supporting_papers.map((title, pIdx) => (
                                       <li key={pIdx} className="truncate">{title}</li>
                                     ))}
@@ -230,19 +231,19 @@ export default function ChatPanel({
               })}
 
               {isChatting && (
-                <div className="flex gap-3 items-start animate-fade-in">
-                  <div className="w-7 h-7 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[11px] font-bold text-zinc-500 animate-pulse">
+                <div className="flex gap-4.5 items-start animate-fade-in max-w-4xl mx-auto w-full">
+                  <div className="w-8.5 h-8.5 rounded bg-[#0b0a12] border border-[#1e1c31] flex items-center justify-center text-[11px] font-bold text-zinc-650 animate-pulse">
                     ...
                   </div>
-                  <div className="space-y-1.5 flex-1">
-                    <div className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider select-none">
+                  <div className="space-y-2 flex-1">
+                    <div className="text-[10px] text-zinc-550 font-bold uppercase tracking-wider select-none">
                       Thinking...
                     </div>
-                    <div className="flex mr-auto bg-zinc-900 text-zinc-400 border border-zinc-850 rounded p-3.5 w-max">
+                    <div className="flex mr-auto bg-[#0e0d1a] border border-[#1d1b33] rounded p-4 w-max">
                       <div className="flex items-center space-x-1.5 py-1">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                        <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
+                        <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                        <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
                       </div>
                     </div>
                   </div>
@@ -252,8 +253,8 @@ export default function ChatPanel({
             </div>
 
             {/* Input Row */}
-            <div className="p-4 border-t border-zinc-800/80 bg-zinc-950">
-              <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800/80 rounded px-4 py-2.5 focus-within:border-zinc-700 transition-all-custom">
+            <div className="p-4 border-t border-[#1e1c31]/60 bg-[#05050a]">
+              <div className="flex items-center gap-2 bg-[#0b0a12] border border-[#1e1c31] rounded px-4 py-3 focus-within:border-[#2e2a4a] transition-all-custom max-w-4xl mx-auto w-full">
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -270,7 +271,7 @@ export default function ChatPanel({
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isChatting}
-                  className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:bg-zinc-800 disabled:text-zinc-600 text-white font-medium rounded transition-all-custom cursor-pointer active:scale-95 text-[11.5px] border border-blue-500/10"
+                  className="px-3.5 py-1.5 bg-[#12111f] hover:bg-[#1a192e] border border-[#1e1c31] hover:border-[#2e2a4a] disabled:opacity-50 disabled:bg-[#0b0a12] disabled:text-zinc-650 text-indigo-400 hover:text-indigo-300 font-bold rounded transition-all-custom cursor-pointer active:scale-95 text-[11px] glow-indigo"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -283,13 +284,13 @@ export default function ChatPanel({
         )}
 
         {activeTab === "timeline" && (
-          <div className="flex-1 overflow-y-auto p-6 custom-scrollbar bg-zinc-950">
+          <div className="flex-1 overflow-y-auto p-6 custom-scrollbar bg-[#05050a]">
             <Timeline timeline={timeline} />
           </div>
         )}
 
         {activeTab === "graph" && (
-          <div className="flex-1 overflow-hidden bg-zinc-950">
+          <div className="flex-1 overflow-hidden bg-[#05050a]">
             <GraphMap graph={graph} />
           </div>
         )}

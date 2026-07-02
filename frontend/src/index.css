@@ -1,46 +1,50 @@
 @import "tailwindcss";
 
-/* Global overrides for dark premium look */
+/* ─── Deep Space / Obsidian Design System ──────────────────────── */
 :root {
-  background-color: #09090b;
-  color: #f4f4f5;
+  --bg-main: #05050a;
+  --bg-panel: #0b0a12;
+  --bg-card: #12111f;
+  --border-color: #1e1c31;
+  --border-highlight: #2e2a4a;
+  --accent-cyan: #06b6d4;
+  --accent-indigo: #6366f1;
+  --accent-purple: #a855f7;
+  
+  background-color: var(--bg-main);
+  color: #e4e4e7;
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
 }
 
-/* Custom dark scrollbar styling */
+/* ─── Custom scrollbars ────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border-radius: 9999px;
+  background: var(--border-color);
+  border-radius: 99px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(--border-highlight);
 }
-
-/* Micro-animations and transitions */
-.transition-all-custom {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Scrollable container styling */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #27272a #09090b;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+/* ─── Transitions ────────────────────────────────────────────── */
+.transition-all-custom {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ─── Keyframe Animations ────────────────────────────────────── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -48,12 +52,13 @@
   to   { opacity: 1; }
 }
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-12px); }
+  from { opacity: 0; transform: translateX(-8px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animate-fade-in-up {
@@ -63,19 +68,41 @@
   animation: fadeIn 0.25s ease both;
 }
 .animate-slide-left {
-  animation: slideInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.animate-scale-in {
-  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ─── Premium Solid Elements ─────────────────────────────────── */
-.flat-card {
-  background-color: #18181b; /* zinc-900 */
-  border: 1px solid rgba(39, 39, 42, 0.8); /* zinc-800 */
+/* ─── Premium Matte Elements ─────────────────────────────────── */
+.obsidian-panel {
+  background-color: var(--bg-panel);
+  border-color: var(--border-color);
 }
 
-.flat-card-hover:hover {
-  border-color: rgba(59, 130, 246, 0.4); /* blue-500 */
-  background-color: rgba(24, 24, 27, 0.8);
+.obsidian-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
+}
+
+.obsidian-card-hover:hover {
+  border-color: var(--border-highlight);
+  background-color: rgba(18, 17, 31, 0.8);
+}
+
+/* ─── Neon Accents & Gradients ───────────────────────────────── */
+.gradient-accent {
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo), var(--accent-purple));
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.glow-indigo {
+  box-shadow: 0 0 12px -2px rgba(99, 102, 241, 0.15);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 12px -2px rgba(16, 185, 129, 0.15);
+}
+
+.glow-red {
+  box-shadow: 0 0 12px -2px rgba(239, 68, 68, 0.15);
 }

@@ -44,7 +44,7 @@ export default function Timeline({ timeline }) {
   }
 
   return (
-    <div className="relative border-l border-zinc-800 ml-4 pl-8 py-2 space-y-8 max-w-2xl mx-auto">
+    <div className="relative border-l border-[#1e1c31] ml-4 pl-8 py-2 space-y-8 max-w-2xl mx-auto">
       {timeline.map((item, index) => {
         const status = getStatusColor(item.consensus_status);
         
@@ -52,14 +52,14 @@ export default function Timeline({ timeline }) {
           <div key={index} className="relative group animate-slide-left" style={{ animationDelay: `${index * 60}ms` }}>
             {/* Timeline Dot */}
             <span
-              className={`absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border-2 ring-4 ring-zinc-950 shadow-md ${status.dot} transition-all-custom`}
+              className={`absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border-2 ring-4 ring-[#05050a] shadow-md ${status.dot} transition-all-custom`}
             />
 
             {/* Event Block */}
-            <div className="bg-zinc-900 border border-zinc-800/80 p-4.5 rounded transition-all-custom group-hover:border-zinc-700 shadow-lg shadow-black/10">
+            <div className="bg-[#0b0a12] border border-[#1e1c31] p-4.5 rounded transition-all-custom group-hover:border-[#2e2a4a] shadow-lg shadow-black/10">
               {/* Header Info */}
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span className="text-[13px] font-bold text-zinc-200 bg-zinc-950 px-2.5 py-0.5 rounded border border-zinc-800/80 shadow-inner">
+                <span className="text-[12px] font-bold text-zinc-300 bg-[#05050a] px-2.5 py-0.5 rounded border border-[#1e1c31] shadow-inner">
                   {item.year}
                 </span>
                 
@@ -69,7 +69,7 @@ export default function Timeline({ timeline }) {
               </div>
 
               {/* Title */}
-              <h3 className="font-semibold text-zinc-200 text-[13.5px] mb-2 group-hover:text-blue-400 transition-colors duration-150">
+              <h3 className="font-semibold text-zinc-200 text-[13px] mb-2 group-hover:text-indigo-400 transition-colors duration-150">
                 {item.title}
               </h3>
 
