@@ -49,17 +49,17 @@ export default function Timeline({ timeline }) {
         const status = getStatusColor(item.consensus_status);
         
         return (
-          <div key={index} className="relative group">
+          <div key={index} className="relative group animate-slide-left" style={{ animationDelay: `${index * 60}ms` }}>
             {/* Timeline Dot */}
             <span
-              className={`absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border-2 ring-4 ring-zinc-950/80 shadow-md ${status.dot} transition-all-custom`}
+              className={`absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border-2 ring-4 ring-zinc-950 shadow-md ${status.dot} transition-all-custom`}
             />
 
             {/* Event Block */}
-            <div className="bg-zinc-900/40 border border-zinc-800/80 p-4.5 rounded-xl transition-all-custom group-hover:border-zinc-700/60 shadow-lg shadow-black/10">
+            <div className="bg-zinc-900 border border-zinc-800/80 p-4.5 rounded transition-all-custom group-hover:border-zinc-700 shadow-lg shadow-black/10">
               {/* Header Info */}
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span className="text-[14px] font-bold text-zinc-200 bg-zinc-800/80 px-2.5 py-0.5 rounded border border-zinc-700/50 shadow-inner">
+                <span className="text-[13px] font-bold text-zinc-200 bg-zinc-950 px-2.5 py-0.5 rounded border border-zinc-800/80 shadow-inner">
                   {item.year}
                 </span>
                 
@@ -69,12 +69,12 @@ export default function Timeline({ timeline }) {
               </div>
 
               {/* Title */}
-              <h3 className="font-semibold text-zinc-100 text-sm mb-2 group-hover:text-blue-400 transition-colors duration-150">
+              <h3 className="font-semibold text-zinc-200 text-[13.5px] mb-2 group-hover:text-blue-400 transition-colors duration-150">
                 {item.title}
               </h3>
 
               {/* Summary */}
-              <p className="text-zinc-400 leading-relaxed text-[12px]">
+              <p className="text-zinc-400 leading-relaxed text-[12px] font-medium">
                 {item.summary}
               </p>
             </div>

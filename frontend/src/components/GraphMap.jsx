@@ -190,18 +190,18 @@ export default function GraphMap({ graph }) {
       <svg ref={svgRef} className="w-full h-full block" />
       
       {/* Legend */}
-      <div className="absolute bottom-3 left-4 bg-zinc-900/80 border border-zinc-800 p-2.5 rounded-lg text-[10px] space-y-1.5 backdrop-blur shadow-md">
+      <div className="absolute bottom-3 left-4 bg-zinc-900 border border-zinc-800/80 p-2.5 rounded text-[10px] space-y-1.5 shadow-md">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-0.5 bg-[#10b981]" />
-          <span className="text-zinc-400">Supports</span>
+          <span className="text-zinc-500 font-semibold">Supports</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-0.5 bg-[#ef4444]" />
-          <span className="text-zinc-400">Contradicts</span>
+          <span className="text-zinc-500 font-semibold">Contradicts</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-0.5 bg-[#3b82f6]" />
-          <span className="text-zinc-400">Extends</span>
+          <span className="text-zinc-500 font-semibold">Extends</span>
         </div>
       </div>
     </div>
